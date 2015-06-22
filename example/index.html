@@ -22,7 +22,7 @@
 
 <body>
   <div>
-    <input type="file" id="file" onchange="loadFile(this)">
+    <input type="file" id="file" onchange="loadFile(this)"/>
     <p><b>Title:</b> <span id="title"></span></p>
     <p><b>Artist:</b> <span id="artist"></span></p>
     <p><b>Album:</b> <span id="album"></span></p>
@@ -51,7 +51,7 @@
         showTags(url);
       }, {
         tags: ["title","artist","album","picture"],
-        dataReader: FileAPIReader(file)
+        dataReader: ID3.FileAPIReader(file)
       });
     }
 

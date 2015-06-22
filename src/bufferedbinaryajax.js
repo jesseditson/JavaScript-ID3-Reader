@@ -13,7 +13,11 @@
  * @param {function(BufferedBinaryFile)} fncCallback The function that will be invoked when the BufferedBinaryFile is ready to be used.
  * @param {function()} fncError The function that will be invoked when an error occrus, for instance, the file pointed by the URL is doesn't exist.
  */
+
+var BinaryFile = require('./binaryfile');
+
 var BufferedBinaryAjax = function(strUrl, fncCallback, fncError) {
+
     function sendRequest(strURL, fncCallback, fncError, aRange, bAcceptRanges, iFileSize, bAsync) {
 		var oHTTP = createRequest();
 		if (oHTTP) {
@@ -82,10 +86,13 @@ var BufferedBinaryAjax = function(strUrl, fncCallback, fncError) {
 	}
     function createRequest() {
 		var oHTTP = null;
-		if (window.XMLHttpRequest) {
-			oHTTP = new XMLHttpRequest();
+        if (typeof window === 'undefined') {
+            var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+            oHTTP = new XMLHttpRequest();
+        } else if (window.XMLHttpRequest) {
+			oHTTP = new window.XMLHttpRequest();
 		} else if (window.ActiveXObject) {
-			oHTTP = new ActiveXObject("Microsoft.XMLHTTP");
+			oHTTP = new window.ActiveXObject("Microsoft.XMLHTTP");
 		}
 		return oHTTP;
 	}
@@ -280,3 +287,4 @@ var BufferedBinaryAjax = function(strUrl, fncCallback, fncError) {
     init();
 };
 
+module.exports = BufferedBinaryAjax;
