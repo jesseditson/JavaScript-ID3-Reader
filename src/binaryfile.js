@@ -159,8 +159,8 @@ if (typeof document !== 'undefined') {
 	b64utils.btoa = window.btoa;
 	b64utils.atob = window.atob;
 } else {
-	b64utils.btoa = require('btoa');
-	b64utils.atob = require('atob');
+	b64utils.btoa = require('btoa'); /* closure-strip */
+	b64utils.atob = require('atob'); /* closure-strip */
 }
 
 module.exports = BinaryFile;

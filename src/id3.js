@@ -13,9 +13,11 @@ var ID3v2 = require('./id3v2');
 var BufferedBinaryAjax = require('./bufferedbinaryajax');
 var FileAPIReader = require('./filereader');
 
-var ID3 = {
-    FileAPIReader: FileAPIReader
-};
+if (typeof window !== 'undefined') {
+    window['FileAPIReader'] = FileAPIReader;
+}
+
+var ID3 = {};
 
 var _files = {};
 // location of the format identifier
@@ -86,5 +88,12 @@ ID3.getTag = function(url, tag) {
 
     return _files[url][tag];
 };
+
+ID3["FileAPIReader"] = FileAPIReader;
+ID3["loadTags"] = ID3.loadTags;
+ID3["getAllTags"] = ID3.getAllTags;
+ID3["getTag"] = ID3.getTag;
+ID3["clearTags"] = ID3.clearTags;
+ID3["clearAll"] = ID3.clearAll;
 
 module.exports = ID3;
