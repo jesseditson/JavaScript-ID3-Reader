@@ -31,7 +31,7 @@
       "email": "jesse.ditson@gmail.com"
     }
   ],
-  "license": "BSD",
+  "license": "BSD-3-Clause",
   "bugs": {
     "url": "https://github.com/aadsm/JavaScript-ID3-Reader/issues"
   },
