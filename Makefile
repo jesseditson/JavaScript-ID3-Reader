@@ -25,7 +25,6 @@ compile:
 	--exclude btoa \
 	--exclude atob \
 	--no-builtins > output.js
-	sed -i.bak '/^.*\/\* closure-strip \*\//d' output.js
 	sed -i.bak "s/\.ID3/['ID3']/g" output.js
 	java -jar $(CLOSURE_COMPILER) \
 		--compilation_level ADVANCED_OPTIMIZATIONS \

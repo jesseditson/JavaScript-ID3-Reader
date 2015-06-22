@@ -87,7 +87,7 @@ var BufferedBinaryAjax = function(strUrl, fncCallback, fncError) {
     function createRequest() {
 		var oHTTP = null;
         if (typeof window === 'undefined') {
-            oHTTP = new (require("xmlhttprequest").XMLHttpRequest)(); /* closure-strip */
+            oHTTP = new (require("xmlhttprequest").XMLHttpRequest)();
         } else if (window.XMLHttpRequest) {
 			oHTTP = new window.XMLHttpRequest();
 		} else if (window.ActiveXObject) {
